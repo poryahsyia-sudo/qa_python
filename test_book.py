@@ -94,4 +94,4 @@ class TestBooksCollector:
         collector = BooksCollector()
         collector.add_new_book('Тайны Коко')
         collector.set_book_genre('Тайны Коко', 'Фантастика')
-        assert collector.get_books_with_specific_genre('Фантастика') == 'Тайны Коко'
+        assert collector.get_books_with_specific_genre('Фантастика') == ['Тайны Коко']
