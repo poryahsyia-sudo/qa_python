@@ -112,3 +112,14 @@ class TestBooksCollector:
         collector.set_book_genre('Тайны Коко', 'Фантастика')
         expected = {'Тайны Коко': 'Фантастика'}
         assert collector.get_books_genre() == expected
+
+
+# Мои тесты на get_books_for_children
+# Позитивнывй тест
+
+    def  test_get_books_for_children_return_book_for_children(self):
+        collector = BooksCollector()
+        collector.add_new_book('Колобок')
+        collector.set_book_genre('Колобок', 'Мультфильмы')
+        expected = ['Колобок']
+        assert collector.get_books_for_children() == expected
