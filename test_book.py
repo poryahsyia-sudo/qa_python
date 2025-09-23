@@ -123,3 +123,13 @@ class TestBooksCollector:
         collector.set_book_genre('Колобок', 'Мультфильмы')
         expected = ['Колобок']
         assert collector.get_books_for_children() == expected
+
+# Мои тесты на add_book_in_favorites
+# Позитивнывй тест
+    def  test_add_book_in_favorites_positive(self):
+        collector = BooksCollector()
+        collector.add_new_book('Дюна')
+        collector.set_book_genre('Дюна', 'Фантастика')
+        collector.add_book_in_favorites('Дюна')
+        expected = ['Дюна']
+        assert collector.get_list_of_favorites_books() == expected
