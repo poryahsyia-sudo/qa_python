@@ -26,4 +26,4 @@ class TestBooksCollector:
     def test_add_new_book_with_title_length_equal_40(self):
         collector = BooksCollector()
         collector.add_new_book('Алиса в стране чудес и Зазеркалье навсегда')
-        assert len(collector.get_books_rating()) == 1
+        assert len(collector.get_books_genre()) == 1
