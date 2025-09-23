@@ -1,3 +1,4 @@
+import pytest
 from main import BooksCollector
 
 # класс TestBooksCollector объединяет набор тестов, которыми мы покрываем наше приложение BooksCollector
@@ -23,7 +24,18 @@ class TestBooksCollector:
     # напиши свои тесты ниже
     # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
 
-    def test_add_new_book_with_title_length_equal_40(self):
+    @pytest.mark.parametrize(
+        "book_name",
+        [
+            ('Алиса в стране чудес и Зазеркалье всегда'),  # длина 40 символов, добавляется
+            ('Секреты затерянного города и древние тайны'), # длина 41 символов — не добавится
+            (""),                                           # пустая строка — не добавится
+        ]
+    )
+
+    def test_add_new_book_with_title_length(self, book_name, expected_count):
         collector = BooksCollector()
-        collector.add_new_book('Алиса в стране чудес и тайна зеркал')
+        collector.add_new_book(book_name)
         assert len(collector.get_books_genre()) == 1
+
+    
