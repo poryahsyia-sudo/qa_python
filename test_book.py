@@ -95,3 +95,10 @@ class TestBooksCollector:
         collector.add_new_book('Тайны Коко')
         collector.set_book_genre('Тайны Коко', 'Фантастика')
         assert collector.get_books_with_specific_genre('Фантастика') == ['Тайны Коко']
+
+# Негативный тест
+    def test_get_books_with_specific_genre_negative(self):
+        collector = BooksCollector()
+        collector.add_new_book('Морозко')
+        collector.set_book_genre('Морозко', 'Сказка')
+        assert collector.get_books_with_specific_genre('Мультфильмы') == []
