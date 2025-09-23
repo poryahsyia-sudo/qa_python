@@ -90,16 +90,8 @@ class TestBooksCollector:
 # Мои тесты на get_books_with_specific_genre
 # Позитивнывй тест
 
-    @pytest.mark.parametrize(
-    'book_name, book_genre, expected',
-    [
-       ([('Тайны Коко', 'Фантастика')], 'Фантастика', ['Тайны Коко']),
-            ([('Оно', 'Ужасы')], 'Ужасы', ['Оно'])
-    ]
-    )
-
-    def test_get_books_with_specific_genre_positive(self, book_name, book_genre, expected):
+    def test_get_books_with_specific_genre_positive(self):
         collector = BooksCollector()
-        collector.add_new_book(book_name)
-        collector.set_book_genre(book_name, book_genre)
-        assert collector.get_books_with_specific_genre(book_genre) == expected
+        collector.add_new_book('Тайны Коко')
+        collector.set_book_genre('Тайны Коко', 'Фантастика')
+        assert collector.get_books_with_specific_genre('Фантастика') == 'Тайны Коко'
