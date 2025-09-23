@@ -54,6 +54,7 @@ class TestBooksCollector:
 
 # Мои тесты  set_book_genre
 
+#  Позитивный тест
     @pytest.mark.parametrize(
     'book_name, book_genre',
     [
@@ -62,8 +63,26 @@ class TestBooksCollector:
     ]
     )
 
-    def test_set_book_genre_add_ganre(self, book_name, book_genre):
+
+    def test_set_book_genre_add_ganre_positive(self, book_name, book_genre):
         collector = BooksCollector()
         collector.add_new_book(book_name)
         collector.set_book_genre(book_name, book_genre)
         assert collector.get_book_genre(book_name) == book_genre
+
+#  Негативный тест
+
+    @pytest.mark.parametrize(
+    'book_name, book_genre',
+    [
+       ('Мара и Морок', 'Фэнтази'),
+       ('Морозко', 'Сказка')
+    ]
+    )
+
+
+    def test_set_book_genre_add_ganre_negative(self, book_name, book_genre):
+        collector = BooksCollector()
+        collector.add_new_book(book_name)
+        collector.set_book_genre(book_name, book_genre)
+        assert collector.get_book_genre(book_name) == ''
