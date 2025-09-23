@@ -24,10 +24,12 @@ class TestBooksCollector:
     # напиши свои тесты ниже
     # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
 
+    # Мои тесты  add_new_book на количество символов
+
     @pytest.mark.parametrize(
-        "book_name",
+        'book_name',
         [
-            ('Я '),                                         # длина 1 символ, добавляется
+            ('Я '),                                       # длина 1 символ, добавляется
             ('Алиса в стране чудес чаепитие с кроликом'), # длина 40 символов, добавится
         ]
     )
@@ -38,7 +40,7 @@ class TestBooksCollector:
         assert len(collector.get_books_genre()) == 1
 
     @pytest.mark.parametrize(
-        "book_name",
+        'book_name',
         [
             ('Секреты затерянного города и древние тайны'), # длина 41 символов — не добавится
             (""),                                           # пустая строка — не добавится
@@ -49,3 +51,19 @@ class TestBooksCollector:
         collector = BooksCollector()
         collector.add_new_book(book_name)
         assert len(collector.get_books_genre()) == 0
+
+# Мои тесты  set_book_genre
+
+@pytest.mark.parametrize(
+    'book_name, book_genre',
+    [
+       ('Тайны Коко', 'Фантастика'),
+       ('Оно', 'Ужасы')
+    ]
+)
+
+def test_set_book_genre_add_ganre(self, book_name, book_genre):
+    collector = BooksCollector()
+    collector.add_new_book(book_name)
+    collector.set_book_genre(book_name, book_genre)
+    assert collector.get_book_genre(book_name) == book_genre
