@@ -27,15 +27,25 @@ class TestBooksCollector:
     @pytest.mark.parametrize(
         "book_name",
         [
-            ('Алиса в стране чудес и Зазеркалье всегда'),  # длина 40 символов, добавляется
+            ('Я '),                                         # длина 1 символ, добавляется
+            ('Алиса в стране чудес чаепитие с кроликом'), # длина 40 символов, добавится
+        ]
+    )
+
+    def test_add_new_book_with_allowed_title_length(self, book_name):
+        collector = BooksCollector()
+        collector.add_new_book(book_name)
+        assert len(collector.get_books_genre()) == 1
+
+    @pytest.mark.parametrize(
+        "book_name",
+        [
             ('Секреты затерянного города и древние тайны'), # длина 41 символов — не добавится
             (""),                                           # пустая строка — не добавится
         ]
     )
 
-    def test_add_new_book_with_title_length(self, book_name):
+    def test_add_new_book_with_disallowed_title_length(self, book_name):
         collector = BooksCollector()
         collector.add_new_book(book_name)
-        assert len(collector.get_books_genre()) == 1
-
-    
+        assert len(collector.get_books_genre()) == 0
