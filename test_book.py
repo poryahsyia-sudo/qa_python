@@ -54,16 +54,16 @@ class TestBooksCollector:
 
 # Мои тесты  set_book_genre
 
-@pytest.mark.parametrize(
+    @pytest.mark.parametrize(
     'book_name, book_genre',
     [
        ('Тайны Коко', 'Фантастика'),
        ('Оно', 'Ужасы')
     ]
-)
+    )
 
-def test_set_book_genre_add_ganre(self, book_name, book_genre):
-    collector = BooksCollector()
-    collector.add_new_book(book_name)
-    collector.set_book_genre(book_name, book_genre)
-    assert collector.get_book_genre(book_name) == book_genre
+    def test_set_book_genre_add_ganre(self, book_name, book_genre):
+        collector = BooksCollector()
+        collector.add_new_book(book_name)
+        collector.set_book_genre(book_name, book_genre)
+        assert collector.get_book_genre(book_name) == book_genre
