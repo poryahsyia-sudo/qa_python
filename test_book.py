@@ -33,7 +33,7 @@ class TestBooksCollector:
         ]
     )
 
-    def test_add_new_book_with_title_length(self, book_name, expected_count):
+    def test_add_new_book_with_title_length(self, book_name):
         collector = BooksCollector()
         collector.add_new_book(book_name)
         assert len(collector.get_books_genre()) == 1
