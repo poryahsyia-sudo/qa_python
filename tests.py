@@ -22,3 +22,8 @@ class TestBooksCollector:
 
     # напиши свои тесты ниже
     # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
+
+    def test_add_new_book_with_title_length_equal_40(self):
+        collector = BooksCollector()
+        collector.add_new_book('Алиса в стране чудес и Зазеркалье навсегда')
+        assert len(collector.get_books_rating()) == 1
