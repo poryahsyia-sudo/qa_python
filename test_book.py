@@ -144,3 +144,23 @@ class TestBooksCollector:
         collector.delete_book_from_favorites('Дюна')
         expected = []
         assert collector.get_list_of_favorites_books() == expected
+
+# Мои тесты на adget_list_of_favorites_books
+# Позитивнывй тест
+    def  test_get_list_of_favorites_books_positive(self):
+        collector = BooksCollector()
+        collector.add_new_book('Четвертое Крыло')
+        collector.add_book_in_favorites('Четвертое Крыло')
+        expected = ['Четвертое Крыло']
+        assert collector.get_list_of_favorites_books() == expected
+
+# Мои тесты на get_book_genre
+# Позитивнывй тест
+    def  test_get_book_genre_positive(self):
+        collector = BooksCollector()
+        collector.add_new_book('Четвертое Крыло')
+        collector.set_book_genre ('Четвертое Крыло', 'Фантастика')
+        expected = {'Четвертое Крыло': 'Фантастика'}
+        assert collector.get_book_genre() == expected
+
+
