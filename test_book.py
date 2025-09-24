@@ -160,7 +160,7 @@ class TestBooksCollector:
         collector = BooksCollector()
         collector.add_new_book('Четвертое Крыло')
         collector.set_book_genre ('Четвертое Крыло', 'Фантастика')
-        expected = {'Четвертое Крыло': 'Фантастика'}
-        assert collector.get_book_genre() == expected
+        expected = 'Фантастика'
+        assert collector.get_book_genre('Четвертое Крыло') == expected
 
 
