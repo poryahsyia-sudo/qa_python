@@ -146,14 +146,11 @@ class TestBooksCollector:
         assert collector.get_list_of_favorites_books() == expected
 
 # Мои тесты на adget_list_of_favorites_books
-# Позитивнывй тест на добавление в коллекцию 2-х книг
+# Позитивнывй тест на добавление в список избранных 2-х книг
 
     def test_get_list_of_favorites_books_two_books(self):
         collector = BooksCollector()
-        collector.add_new_book('Убийство в восточном экспрессе')
-        collector.add_book_in_favorites('Убийство в восточном экспрессе')
-        collector.add_new_book('Верные враги')
-        collector.add_book_in_favorites('Верные враги')
+        collector.favorites = ['Убийство в восточном экспрессе', 'Верные враги']
         assert collector.get_list_of_favorites_books() == ['Убийство в восточном экспрессе', 'Верные враги']
 
 # Мои тесты на get_book_genre
@@ -161,6 +158,7 @@ class TestBooksCollector:
 
     def  test_get_book_genre_for_unknown_book_returns_none(self):
         collector = BooksCollector()
+        collector.books_genre = {'Скорбь сатаны': 'Фантастика'}
         expected = None
         assert collector.get_book_genre('Письма незнакомке') == expected
 
