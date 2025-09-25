@@ -146,21 +146,24 @@ class TestBooksCollector:
         assert collector.get_list_of_favorites_books() == expected
 
 # Мои тесты на adget_list_of_favorites_books
-# Позитивнывй тест
-    def  test_get_list_of_favorites_books_positive(self):
+# Позитивнывй тест на добавление в коллекцию 2-х книг
+
+    def test_get_list_of_favorites_books_two_books(self):
         collector = BooksCollector()
-        collector.add_new_book('Четвертое Крыло')
-        collector.add_book_in_favorites('Четвертое Крыло')
-        expected = ['Четвертое Крыло']
-        assert collector.get_list_of_favorites_books() == expected
+        collector.add_new_book('Убийство в восточном экспрессе')
+        collector.add_book_in_favorites('Убийство в восточном экспрессе')
+        collector.add_new_book('Верные враги')
+        collector.add_book_in_favorites('Верные враги')
+        assert collector.get_list_of_favorites_books() == ['Убийство в восточном экспрессе', 'Верные враги']
 
 # Мои тесты на get_book_genre
 # Позитивнывй тест
-    def  test_get_book_genre_positive(self):
+
+    def  test_get_book_genre_for_unknown_book_returns_empty_string(self):
         collector = BooksCollector()
-        collector.add_new_book('Четвертое Крыло')
-        collector.set_book_genre ('Четвертое Крыло', 'Фантастика')
-        expected = 'Фантастика'
-        assert collector.get_book_genre('Четвертое Крыло') == expected
+        collector.add_new_book('Скорбь сатаны')
+        collector.set_book_genre ('Скорбь сатаны', 'Фантастика')
+        expected = ''
+        assert collector.get_book_genre('Письма незнакомке') == expected
 
 
