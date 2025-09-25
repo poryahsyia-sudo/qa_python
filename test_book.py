@@ -145,8 +145,8 @@ class TestBooksCollector:
         expected = []
         assert collector.get_list_of_favorites_books() == expected
 
-# Мои тесты на adget_list_of_favorites_books
-# Позитивнывй тест на добавление в список избранных 2-х книг
+# Мои тесты на get_list_of_favorites_books
+# Позитивнывй тест на получение из списка избранных  книг - 2-х книг
 
     def test_get_list_of_favorites_books_two_books(self):
         collector = BooksCollector()
