@@ -157,12 +157,10 @@ class TestBooksCollector:
         assert collector.get_list_of_favorites_books() == ['Убийство в восточном экспрессе', 'Верные враги']
 
 # Мои тесты на get_book_genre
-# Позитивнывй тест
+# Негативный тест назапрос жанра несуществующей книги
 
-    def  test_get_book_genre_for_unknown_book_returns_empty_string(self):
+    def  test_get_book_genre_for_unknown_book_returns_none(self):
         collector = BooksCollector()
-        collector.add_new_book('Скорбь сатаны')
-        collector.set_book_genre ('Скорбь сатаны', 'Фантастика')
         expected = None
         assert collector.get_book_genre('Письма незнакомке') == expected
 
